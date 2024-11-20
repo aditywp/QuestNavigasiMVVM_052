@@ -13,7 +13,7 @@ class MahasiswaViewModel : ViewModel() {
 
     val dataModel: StateFlow<Mahasiswa> = _datamodel.asStateFlow()
 
-    fun SaveDataMhs(listData : MutableList<String>
+    fun savedDataMhs(listData : MutableList<String>
     ){
         _datamodel.update { mhs -> mhs.copy(
             nama = listData [0],

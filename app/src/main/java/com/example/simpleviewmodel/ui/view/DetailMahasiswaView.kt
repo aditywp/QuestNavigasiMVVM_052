@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,14 +16,15 @@ import com.example.simpleviewmodel.model.Mahasiswa
 @Composable
 fun DetailMahasiswaView(
     dataMhs: Mahasiswa,
-    modifier: Modifier
+    modifier: Modifier,
+    onClickButton: () -> Boolean
 ){
     val listDataMhs = listOf(
         Pair("Nama", dataMhs.nama),
         Pair("Gender", dataMhs.gender),
         Pair("Alamat", dataMhs.alamat),
         Pair("Email", dataMhs.email),
-        Pair("Nohp", dataMhs.nohp)
+        Pair("NoTelpon", dataMhs.nohp)
     )
 
     Column(
@@ -33,6 +35,9 @@ fun DetailMahasiswaView(
         listDataMhs.forEach { data ->
             DetailMhs(judul = data.first,
                 Isi = data.second)
+        }
+        Button(onClick = {onClickButton() }) {
+            Text(text = "Kembali")
         }
     }
 }
