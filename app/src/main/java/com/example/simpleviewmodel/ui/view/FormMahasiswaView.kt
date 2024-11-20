@@ -37,5 +37,67 @@ fun FormMahasiswaView(
         nama, memilihJK, alamat
     )
 
+    Column (modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp),
+        horizontalAlignment =  Alignment.CenterHorizontally
+    ){
+        Text("Biodata",
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold)
 
+        Spacer(Modifier.padding(16.dp))
+
+        TextField(
+            modifier = Modifier .fillMaxWidth() .padding(5.dp),
+            value = nama,
+            onValueChange = {nama = it},
+            label = { Text("nama")},
+            placeholder = { Text("Masukkan Nama Anda")}
+        )
+
+        Row {
+            listGender.forEach { item ->
+                Row(verticalAlignment = Alignment.CenterVertically ) { RadioButton(
+                    selected = memilihJK == item,
+                    onClick = {
+                        memilihJK = item
+                    }
+                )
+                    Text(item)
+
+                }
+            }
+        }
+
+        TextField(
+            modifier = Modifier .fillMaxWidth() .padding(5.dp),
+            value = email,
+            onValueChange = {email = it},
+            label = { Text("email")},
+            placeholder = { Text("Masukkan email Anda")}
+        )
+
+        TextField(
+            modifier = Modifier .fillMaxWidth() .padding(5.dp),
+            value = noTelpon,
+            onValueChange = {noTelpon = it},
+            label = { Text("NoTelpon")},
+            placeholder = { Text("Masukkan NoTelpon Anda")}
+        )
+
+        TextField(
+            modifier = Modifier .fillMaxWidth() .padding(5.dp),
+            value = alamat,
+            onValueChange = {alamat = it},
+            label = { Text("alamat")},
+            placeholder = { Text("Masukkan alamat Anda")}
+        )
+
+        Button (onClick = {
+            onSubmitClick(listData)
+        }) {
+            Text("Submit")
+        }
+    }
 }
